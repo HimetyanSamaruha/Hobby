@@ -5,10 +5,12 @@
 #include "pch.h"
 #include "Game.h"
 
+#include "Camera\TpsCamera.h"
+
 extern void ExitGame();
 
 using namespace DirectX;
-
+using namespace DirectX::SimpleMath;
 using Microsoft::WRL::ComPtr;
 
 Game::Game() :
@@ -29,6 +31,44 @@ void Game::Initialize(HWND window, int width, int height)
     CreateDevice();
 
     CreateResources();
+
+	//各必須変数の初期化
+	m_batch = std::make_unique<PrimitiveBatch<VertexPositionNormal>>(m_d3dContext.Get());
+	m_effect = std::make_unique<BasicEffect>(m_d3dDevice.Get());
+	m_view = Matrix::CreateLookAt(Vector3(0.f, 2.f, 5.f),
+		Vector3::Zero, Vector3::UnitY);
+	m_proj = Matrix::CreatePerspectiveFieldOfView(XM_PI / 4.f,
+		float(m_outputWidth) / float(m_outputHeight), 0.1f, 500.f);
+
+	m_effect->SetView(m_view);
+	m_effect->SetProjection(m_proj);
+
+	m_effect->SetVertexColorEnabled(true);
+
+	void const* shaderByteCode;
+	size_t byteCodeLength;
+
+	m_effect->GetVertexShaderBytecode(&shaderByteCode, &byteCodeLength);
+
+	m_d3dDevice->CreateInputLayout(VertexPositionColor::InputElements,
+		VertexPositionColor::InputElementCount,
+		shaderByteCode, byteCodeLength,
+		m_inputLayout.GetAddressOf());
+
+	//カメラの初期化
+	camera = std::make_unique<TpsCamera>(m_outputWidth,m_outputHeight);
+
+	//オブジェクトクラスの初期化
+	Object3D::InitielizeStatic(m_d3dDevice.Get(), m_d3dContext.Get(), camera.get());
+
+	//オブジェクトの生成
+	test = std::make_unique<Object3D>();
+
+	//読み込み
+	test->Load(L"Resources/Sora.cmo");
+
+	//カメラにプレイヤーをセット
+	//camera->SetObject3D(test.get());
 
     // TODO: Change the timer settings if you want something other than the default variable timestep mode.
     // e.g. for 60 FPS fixed timestep update logic, call:
@@ -56,6 +96,8 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
     elapsedTime;
+
+	camera->Update();
 }
 
 // Draws the scene.
@@ -69,7 +111,23 @@ void Game::Render()
 
     Clear();
 
-    // TODO: Add your rendering code here.
+
+	// TODO: Add your rendering code here.
+
+	DirectX::CommonStates m_states(m_d3dDevice.Get());
+
+	m_d3dContext->OMSetBlendState(m_states.Opaque(), nullptr, 0xFFFFFFFF);
+	m_d3dContext->OMSetDepthStencilState(m_states.DepthNone(), 0);
+	m_d3dContext->RSSetState(m_states.CullNone());
+
+	test->Draw();
+
+	m_effect->SetWorld(m_world);
+	m_effect->SetView(m_view);
+	m_effect->SetProjection(m_proj);
+
+	m_effect->Apply(m_d3dContext.Get());
+	m_d3dContext->IASetInputLayout(m_inputLayout.Get());
 
     Present();
 }

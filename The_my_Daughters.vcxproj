@@ -158,13 +158,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera\Camera.h" />
+    <ClInclude Include="Camera\TpsCamera.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Object\Object.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera\Camera.cpp" />
+    <ClCompile Include="Camera\TpsCamera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Object\Object.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -180,6 +186,11 @@
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="settings.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Asset\Sora.FBX">
+      <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Resources\%(Filename).cmo</ContentOutput>
+    </MeshContentTask>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

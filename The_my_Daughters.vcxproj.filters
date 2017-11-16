@@ -5,16 +5,43 @@
       <UniqueIdentifier>909b6df2-8132-4a3d-98a6-ea305be3026d</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{ae715d0e-f1be-415a-89a6-6c871117177b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{dbad3d0e-b7ca-4f88-b697-69441e85e93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{4d7c012a-0c66-49b1-930e-840184625cc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\TpsCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\TpsCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -28,5 +55,10 @@
     <Manifest Include="settings.manifest">
       <Filter>Assets</Filter>
     </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Asset\Sora.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

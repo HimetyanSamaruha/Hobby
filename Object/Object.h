@@ -6,7 +6,7 @@
 #include <Model.h>
 
 //‰¼
-#include "../../Camera.h"
+#include "../Camera/Camera.h"
 
 #pragma once
 
