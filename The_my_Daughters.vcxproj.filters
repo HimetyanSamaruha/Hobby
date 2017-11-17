@@ -14,6 +14,12 @@
     <Filter Include="State">
       <UniqueIdentifier>{4d7c012a-0c66-49b1-930e-840184625cc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Char">
+      <UniqueIdentifier>{21eb906f-7d25-4902-8a52-902b61010b18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Player">
+      <UniqueIdentifier>{a587b9d9-b948-43b4-a4d9-bc8d8e0ab246}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -27,6 +33,9 @@
     </ClInclude>
     <ClInclude Include="Object\Object.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player\Player.h">
+      <Filter>Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +51,7 @@
     <ClCompile Include="Object\Object.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Player\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -58,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Asset\Sora.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Asset\box.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>

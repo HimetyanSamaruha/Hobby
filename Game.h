@@ -15,6 +15,7 @@
 
 #include "Object\Object.h"
 #include "Camera/TpsCamera.h"
+#include "Object\Player\Player.h"
 
 
 // A basic game implementation that creates a D3D11 device and
@@ -81,6 +82,8 @@ private:
 	std::unique_ptr<DirectX::PrimitiveBatch<DirectX::VertexPositionNormal>> m_batch;
 	//レイアウト
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> m_inputLayout;
+	//キーボード
+	std::unique_ptr<DirectX::Keyboard> m_keyBoard;
 
 	DirectX::SimpleMath::Matrix m_world;
 	DirectX::SimpleMath::Matrix m_view;
@@ -89,6 +92,8 @@ private:
 
 	//他設定変数
 	std::unique_ptr<Object3D> test;
+
+	std::unique_ptr<Player> player;
 
 	std::unique_ptr<TpsCamera> camera;
 };

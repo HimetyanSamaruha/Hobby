@@ -3,7 +3,7 @@
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
 
-//
+//スタティック変数
 Microsoft::WRL::ComPtr<ID3D11Device>			Object3D::Device;
 Microsoft::WRL::ComPtr<ID3D11DeviceContext>		Object3D::Context;
 

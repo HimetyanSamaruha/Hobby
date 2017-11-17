@@ -58,11 +58,22 @@ void Game::Initialize(HWND window, int width, int height)
 	//カメラの初期化
 	camera = std::make_unique<TpsCamera>(m_outputWidth,m_outputHeight);
 
+	//キーボードの初期化
+	m_keyBoard = std::make_unique<Keyboard>();
+
 	//オブジェクトクラスの初期化
 	Object3D::InitielizeStatic(m_d3dDevice.Get(), m_d3dContext.Get(), camera.get());
 
 	//オブジェクトの生成
 	test = std::make_unique<Object3D>();
+
+	//プレイヤーの初期化
+	player = std::make_unique<Player>();
+
+	player->SetKey(m_keyBoard.get());
+
+	//追尾対象のセット
+	camera->SetObject3D(player.get());
 
 	//読み込み
 	test->Load(L"Resources/Sora.cmo");
@@ -98,6 +109,8 @@ void Game::Update(DX::StepTimer const& timer)
     elapsedTime;
 
 	camera->Update();
+
+	player->Update();
 }
 
 // Draws the scene.
@@ -121,6 +134,8 @@ void Game::Render()
 	m_d3dContext->RSSetState(m_states.CullNone());
 
 	test->Draw();
+
+	player->Draw();
 
 	m_effect->SetWorld(m_world);
 	m_effect->SetView(m_view);
