@@ -92,8 +92,9 @@ private:
 
 	//‘¼İ’è•Ï”
 	std::unique_ptr<Object3D> test;
-
 	std::unique_ptr<Player> player;
 
 	std::unique_ptr<TpsCamera> camera;
+
+	std::unique_ptr<Object3D> test2;
 };

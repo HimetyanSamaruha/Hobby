@@ -193,6 +193,9 @@
     <MeshContentTask Include="Asset\box.FBX">
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Resources\%(Filename).cmo</ContentOutput>
     </MeshContentTask>
+    <MeshContentTask Include="Asset\ground200m.FBX">
+      <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Resources\%(Filename).cmo</ContentOutput>
+    </MeshContentTask>
     <MeshContentTask Include="Asset\Sora.FBX">
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Resources\%(Filename).cmo</ContentOutput>
     </MeshContentTask>

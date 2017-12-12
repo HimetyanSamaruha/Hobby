@@ -66,6 +66,7 @@ void Game::Initialize(HWND window, int width, int height)
 
 	//オブジェクトの生成
 	test = std::make_unique<Object3D>();
+	test2 = std::make_unique<Object3D>();
 
 	//プレイヤーの初期化
 	player = std::make_unique<Player>();
@@ -77,6 +78,7 @@ void Game::Initialize(HWND window, int width, int height)
 
 	//読み込み
 	test->Load(L"Resources/Sora.cmo");
+	test2->Load(L"Resources/ground200m.cmo");
 
 	//カメラにプレイヤーをセット
 	//camera->SetObject3D(test.get());
@@ -134,6 +136,7 @@ void Game::Render()
 	m_d3dContext->RSSetState(m_states.CullNone());
 
 	test->Draw();
+	test2->Draw();
 
 	player->Draw();
 

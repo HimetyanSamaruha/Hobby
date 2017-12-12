@@ -22,16 +22,9 @@ void Player::Update()
 		Keyboard::State keystate = KeyBoard->GetState();
 		Tracker.Update(keystate);
 
-		if (keystate.W)
-		{
-			Vector3 moveV(0, 0, -0.1f);
-
-			Matrix rotmat = Matrix::CreateRotationY(0);
-			//移動量ベクトルを自機の角度分回転させる
-			moveV = Vector3::TransformNormal(moveV, rotmat);
-			Vector3 pos = this->GetTranslation();
-			this->SetTranslation(pos + moveV);
-		}
+		if (keystate.W)	Up();
+		if (keystate.S)	Down();
+		
 	}
 	
 
@@ -41,4 +34,38 @@ void Player::Update()
 void Player::SetKey(DirectX::Keyboard * key)
 {
 	this->KeyBoard = key;
+}
+
+void Player::Up()
+{
+	Vector3 moveV(0, 0, -0.1f);
+
+	Matrix rotmat = Matrix::CreateRotationY(0);
+	//移動量ベクトルを自機の角度分回転させる
+	moveV = Vector3::TransformNormal(moveV, rotmat);
+	Vector3 pos = this->GetTranslation();
+	this->SetTranslation(pos + moveV);
+}
+
+void Player::Down()
+{
+	Vector3 moveV(0, 0, 0.1f);
+
+	Matrix rotmat = Matrix::CreateRotationY(0);
+	//移動量ベクトルを自機の角度分回転させる
+	moveV = Vector3::TransformNormal(moveV, rotmat);
+	Vector3 pos = this->GetTranslation();
+	this->SetTranslation(pos + moveV);
+}
+
+void Player::Right()
+{
+}
+
+void Player::Left()
+{
+}
+
+void Player::Jamp()
+{
 }

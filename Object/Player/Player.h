@@ -26,6 +26,13 @@ private:
 	DirectX::Keyboard* KeyBoard;
 	DirectX::Keyboard::KeyboardStateTracker Tracker;
 
+	//‘€ì‚É‚æ‚éƒAƒNƒVƒ‡ƒ“
+	void Up();
+	void Down();
+	void Right();
+	void Left();
+	void Jamp();
+
 	float Angie;
 
 };
