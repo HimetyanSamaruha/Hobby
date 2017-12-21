@@ -5,7 +5,7 @@
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 #pragma once
 
-#include "../Games/Object/Object.h"
+#include "../Object/Object.h"
 #include "Collision.h"
 
 // “–‚½‚è”»’èƒm[ƒh //

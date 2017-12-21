@@ -27,10 +27,8 @@ protected:
 
 	//デバイス
 	static Microsoft::WRL::ComPtr<ID3D11Device> Device;
-
 	//テキスト
 	static Microsoft::WRL::ComPtr<ID3D11DeviceContext> Context;
-
 	//汎用ステート
 	static std::unique_ptr<DirectX::CommonStates> States;
 	static std::unique_ptr<DirectX::EffectFactory> Factory;

@@ -97,4 +97,6 @@ private:
 	std::unique_ptr<TpsCamera> camera;
 
 	std::unique_ptr<Object3D> test2;
+
+	std::unique_ptr<Object3D> house;
 };

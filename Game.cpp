@@ -67,11 +67,13 @@ void Game::Initialize(HWND window, int width, int height)
 	//オブジェクトの生成
 	test = std::make_unique<Object3D>();
 	test2 = std::make_unique<Object3D>();
+	house = std::make_unique<Object3D>();
 
 	//プレイヤーの初期化
 	player = std::make_unique<Player>();
 
 	player->SetKey(m_keyBoard.get());
+	camera->SetKeyboard(m_keyBoard.get());
 
 	//追尾対象のセット
 	camera->SetObject3D(player.get());
@@ -79,6 +81,9 @@ void Game::Initialize(HWND window, int width, int height)
 	//読み込み
 	test->Load(L"Resources/Sora.cmo");
 	test2->Load(L"Resources/ground200m.cmo");
+	house->Load(L"Resources/house.cmo");
+
+	house->SetTranslation(Vector3(20, 0, -50));
 
 	//カメラにプレイヤーをセット
 	//camera->SetObject3D(test.get());
@@ -137,6 +142,8 @@ void Game::Render()
 
 	test->Draw();
 	test2->Draw();
+
+	house->Draw();
 
 	player->Draw();
 
